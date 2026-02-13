@@ -11,9 +11,25 @@ def browser_init(context):
     """
     :param context: Behave context
     """
-    driver_path = ChromeDriverManager().install()
-    service = Service(driver_path)
-    context.driver = webdriver.Chrome(service=service)
+
+    """
+    Headless Chrome
+    """
+    context.driver = webdriver.Chrome()
+
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    context.driver = webdriver.Chrome(options=options)
+
+    """
+    Headless Firefox
+    """
+    # context.driver = webdriver.Firefox()
+    #
+    # options = webdriver.FirefoxOptions()
+    # options.add_argument('--headless')
+    # context.driver = webdriver.Firefox(options=options)
+
 
     context.driver.maximize_window()
     context.driver.implicitly_wait(4)
@@ -35,5 +51,5 @@ def after_step(context, step):
         print('\nStep failed: ', step)
 
 
-def after_scenario(context, feature):
+def after_scenario(context, scenario):
     context.driver.quit()
