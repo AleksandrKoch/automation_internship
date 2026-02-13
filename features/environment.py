@@ -23,9 +23,6 @@ def browser_init(context):
     # ==================================================
     # =============== CHROME NORMAL MODE ===============
     # ==================================================
-    # To run Chrome in normal (visible) mode:
-    # 1️⃣ Comment out the entire CHROME HEADLESS block above
-    # 2️⃣ Uncomment this block below
 
 
     chrome_options = ChromeOptions()
@@ -61,9 +58,6 @@ def browser_init(context):
     # ==================================================
     # =============== FIREFOX HEADLESS =================
     # ==================================================
-    # To run Firefox headless:
-    # 1️⃣ Comment out BOTH Chrome blocks above
-    # 2️⃣ Uncomment this block
 
     """
     firefox_options = FirefoxOptions()
