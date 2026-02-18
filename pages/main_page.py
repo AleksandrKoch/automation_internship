@@ -3,12 +3,8 @@ from pages.base_page import Page
 
 
 class MainPage(Page):
-    # Based on your HTML:
-    # <a ... target="_blank" class="button-link-menu ..."><div ...>Connect the developer</div></a>
-    CONNECT_DEVELOPER_BTN = (
-        By.XPATH,
-        "//a[@target='_blank' and .//div[normalize-space()='Connect the developer']]"
-    )
+    # different button for now
+    CONNECT_DEVELOPER_BTN = (By.CSS_SELECTOR, "a[data-sentry-component='MenuFooterBanner']")
 
     def open_main(self):
         self.open_url('/')
