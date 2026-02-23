@@ -16,55 +16,55 @@ from selenium.webdriver.chrome.options import Options
 from app.application import Application
 
 ### RUN TEST IN BROWSERSTACK ###
-def browser_init(context, scenario_name):
-    bs_user = 'alexanderkoch_1j39IF'
-    bs_key = 'pmkJzr43pXhsTUzfAUjh'
-
-    url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
-    options = Options()
-    bstack_options = {
-        "os": "Windows",
-        "osVersion": "10",
-        "browserVersion": "latest",
-        'browserName': 'Chrome',
-        'sessionName': scenario_name,
-    }
-    options.set_capability('bstack:options', bstack_options)
-    context.driver = webdriver.Remote(command_executor=url, options=options)
-
-    context.driver.implicitly_wait(4)
-    context.driver.wait = WebDriverWait(context.driver, timeout=10)
-    context.app = Application(context.driver)
-
-
-def before_scenario(context, scenario):
-    print('\nStarted scenario: ', scenario.name)
-    browser_init(context, scenario.name)
+# def browser_init(context, scenario_name):
+#     bs_user = 'alexanderkoch_1j39IF'
+#     bs_key = 'pmkJzr43pXhsTUzfAUjh'
+#
+#     url = f'http://{bs_user}:{bs_key}@hub-cloud.browserstack.com/wd/hub'
+#     options = Options()
+#     bstack_options = {
+#         "os": "Windows",
+#         "osVersion": "10",
+#         "browserVersion": "latest",
+#         'browserName': 'Chrome',
+#         'sessionName': scenario_name,
+#     }
+#     options.set_capability('bstack:options', bstack_options)
+#     context.driver = webdriver.Remote(command_executor=url, options=options)
+#
+#     context.driver.implicitly_wait(4)
+#     context.driver.wait = WebDriverWait(context.driver, timeout=10)
+#     context.app = Application(context.driver)
+#
+#
+# def before_scenario(context, scenario):
+#     print('\nStarted scenario: ', scenario.name)
+#     browser_init(context, scenario.name)
 ### END BROWSERSTACK ###
 
-# def browser_init(context):
-#     """
-#     :param context: Behave context
-#     """
-#
-#
+def browser_init(context):
+    """
+    :param context: Behave context
+    """
+
+
 #     # ==================================================
 #     # =============== CHROME NORMAL MODE ===============
 #     # ==================================================
-#
-#
-#     chrome_options = ChromeOptions()
-#
-#     chrome_driver_path = ChromeDriverManager().install()
-#     chrome_service = ChromeService(chrome_driver_path)
-#
-#     context.driver = webdriver.Chrome(
-#         service=chrome_service,
-#         options=chrome_options
-#     )
-#
-#     context.driver.maximize_window()
-#
+
+
+    chrome_options = ChromeOptions()
+
+    chrome_driver_path = ChromeDriverManager().install()
+    chrome_service = ChromeService(chrome_driver_path)
+
+    context.driver = webdriver.Chrome(
+        service=chrome_service,
+        options=chrome_options
+    )
+
+    context.driver.maximize_window()
+
 #     # ==================================================
 #     # =============== CHROME HEADLESS ==================
 #     # ==================================================
@@ -101,15 +101,15 @@ def before_scenario(context, scenario):
 #     )
 #     """
 #
-#     context.driver.implicitly_wait(4)
-#     context.driver.wait = WebDriverWait(context.driver, timeout=10)
-#     context.app = Application(context.driver)
+    context.driver.implicitly_wait(4)
+    context.driver.wait = WebDriverWait(context.driver, timeout=10)
+    context.app = Application(context.driver)
 
 ### UNCOMMENT THIS BEFORE_SCENARIO WHEN NOT USING BROWSER STACK ###
 
-# def before_scenario(context, scenario):
-#     print('\nStarted scenario: ', scenario.name)
-#     browser_init(context)
+def before_scenario(context, scenario):
+    print('\nStarted scenario: ', scenario.name)
+    browser_init(context)
 
 
 def before_step(context, step):
