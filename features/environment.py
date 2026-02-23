@@ -15,6 +15,8 @@ from selenium.webdriver.chrome.options import Options
 
 from app.application import Application
 
+# behave -f allure_behave.formatter:AllureFormatter -o test_results/ --tags=smoke
+
 ### RUN TEST IN BROWSERSTACK ###
 # def browser_init(context, scenario_name):
 #     bs_user = 'alexanderkoch_1j39IF'

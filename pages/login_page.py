@@ -13,12 +13,8 @@ class LoginPage(Page):
         self.open_url('/sign-in')
         self.wait_until_element_present(*self.EMAIL_INPUT)
 
-    def login(self, email=None, password=None):
-        """
-        Preferred: store creds in env vars:
-          REELLY_EMAIL
-          REELLY_PASSWORD
-        """
+    def login(self, email='kocherginalexander@gmail.com', password='TestPassword'):
+
         email = email or os.getenv("REELLY_EMAIL")
         password = password or os.getenv("REELLY_PASSWORD")
 
