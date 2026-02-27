@@ -4,7 +4,7 @@ from pages.base_page import Page
 
 class MainPage(Page):
     # different button for now
-    CONNECT_DEVELOPER_BTN = (By.CSS_SELECTOR, "a[data-sentry-component='MenuFooterBanner']")
+    CONNECT_DEVELOPER_BTN = (By.XPATH, "//a[.//span[normalize-space()='Deals']]")
 
     def open_main(self):
         self.open_url('/')
